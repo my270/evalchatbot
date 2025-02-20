@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Chatbot</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Évaluation du Chatbot</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Critère</th>
+                <th>Points</th>
+                <th>Description</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pertinence du contenu</td>
+                <td>5</td>
+                <td>Les informations fournies sont claires, précises et adaptées au projet.<br>
+                    Le chatbot met bien en valeur le projet réalisé.<br>
+                    Les réponses sont pertinentes et apportent une réelle valeur ajoutée.</td>
+                <td><input type="number" class="total-ligne" min="0" max="5"></td>
+            </tr>
+            <tr>
+                <td>Respect des consignes</td>
+                <td>4</td>
+                <td>Structure conforme aux consignes (titre, message d’accueil, arborescence avec choix interactifs, retour au menu).</td>
+                <td><input type="number" class="total-ligne" min="0" max="4"></td>
+            </tr>
+            <tr>
+                <td>Interactivité et fluidité</td>
+                <td>3</td>
+                <td>Le chatbot est intuitif et facile à utiliser.<br>
+                    Les liens et interactions sont bien pensés et logiques.<br>
+                    L’expérience utilisateur est agréable et fluide.</td>
+                <td><input type="number" class="total-ligne" min="0" max="3"></td>
+            </tr>
+            <tr>
+                <td>Qualité de la rédaction</td>
+                <td>2</td>
+                <td>Texte clair, concis et sans fautes majeures.<br>
+                    Utilisation d’un langage engageant et compréhensible.</td>
+                <td><input type="number" class="total-ligne" min="0" max="2"></td>
+            </tr>
+            <tr>
+                <td>Esthétique et attractivité</td>
+                <td>3</td>
+                <td>Présentation soignée et visuellement agréable.<br>
+                    Utilisation pertinente des émojis.<br>
+                    Mise en forme rendant le chatbot attrayant.</td>
+                <td><input type="number" class="total-ligne" min="0" max="3"></td>
+            </tr>
+            <tr>
+                <td>Médias et liens</td>
+                <td>3</td>
+                <td>Ajout d’au moins une image pertinente illustrant le sujet.<br>
+                    Lien(s) externe(s) fonctionnel(s) pour approfondir l’information.</td>
+                <td><input type="number" class="total-ligne" min="0" max="3"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Total sur 20</strong></td>
+                <td id="total-points">0</td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <script>
+        function calculerTotal() {
+            let total = 0;
+            document.querySelectorAll('.total-ligne').forEach(input => {
+                total += parseInt(input.value) || 0;
+            });
+            document.getElementById('total-points').textContent = total;
+        }
+        document.querySelectorAll('.total-ligne').forEach(input => {
+            input.addEventListener('input', calculerTotal);
+        });
+    </script>
+</body>
+</html>
