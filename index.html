@@ -6,8 +6,9 @@
     <title>Évaluation Chatbot</title>
     <style>
         table {
-            width: 100%;
+            width: 70%;
             border-collapse: collapse;
+            margin: auto;
         }
         th, td {
             border: 1px solid black;
@@ -17,12 +18,18 @@
         th {
             background-color: #f2f2f2;
         }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
-    <h2>Évaluation du Chatbot</h2>
+    <h2 style="text-align: center;">Évaluation du Chatbot</h2>
     <table id="evaluation-table">
         <thead>
             <tr>
@@ -100,15 +107,16 @@
         });
         
         function telechargerPDF() {
-            html2canvas(document.getElementById("evaluation-table")).then(canvas => {
+            html2canvas(document.getElementById("evaluation-table"), { scale: 2 }).then(canvas => {
                 const imgData = canvas.toDataURL("image/png");
                 const { jsPDF } = window.jspdf;
-                let pdf = new jsPDF();
+                let pdf = new jsPDF("p", "mm", "a4");
                 pdf.text("Évaluation du Chatbot", 10, 10);
-                pdf.addImage(imgData, 'PNG', 10, 20, 190, 0);
+                pdf.addImage(imgData, 'PNG', 10, 20, 180, 0);
                 pdf.save("evaluation_chatbot.pdf");
             });
         }
     </script>
 </body>
 </html>
+
